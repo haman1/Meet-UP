@@ -4,7 +4,7 @@ import './style.css';
 import { initializeApp } from 'firebase/app';
 
 // Add the Firebase products and methods that you want to use
-import {} from 'firebase/auth';
+import { getAuth, EmailAuthProvider } from 'firebase/auth';
 import {} from 'firebase/firestore';
 
 import * as firebaseui from 'firebaseui';
@@ -56,5 +56,12 @@ async function main() {
   };
 
   // const ui = new firebaseui.auth.AuthUI(auth);
+  const ui = new firebaseui.auth.AuthUI(auth);
+
+  // Listen to RSVP button clicks
+  startRsvpButton.addEventListener("click",
+   () => {
+        ui.start("#firebaseui-auth-container", uiConfig);
+  });
 }
 main();
